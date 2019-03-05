@@ -9,97 +9,38 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import SpriteKit
+import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var gameView: GameView {
+        return view as! GameView
+    }
+    var scene: SCNScene!
+    let playerNode = PlayerNode()
+    var touch: UITouch?
+    var direction = float2(0, 0)
+    let cameraNode = CameraNode()
+    
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
+        scene = SCNScene()
+        gameView.scene = scene
         
-        // create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
-        
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-        
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = .ambient
-        ambientLightNode.light!.color = UIColor.darkGray
-        scene.rootNode.addChildNode(ambientLightNode)
-        
-        // retrieve the ship node
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-        
-        // animate the 3d object
-        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
-        // retrieve the SCNView
-        let scnView = self.view as! SCNView
-        
-        // set the scene to the view
-        scnView.scene = scene
-        
-        // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
-        scnView.showsStatistics = true
-        
-        // configure the view
-        scnView.backgroundColor = UIColor.black
-        
-        // add a tap gesture recognizer
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        scnView.addGestureRecognizer(tapGesture)
-    }
+        let lightNode = LightNode()
+        gameView.delegate = self
+        gameView.isPlaying = true
+        let floorNode = FloorNode()
     
-    @objc
-    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-        // retrieve the SCNView
-        let scnView = self.view as! SCNView
+        scene.rootNode.addChildNode(lightNode)
+        scene.rootNode.addChildNode(cameraNode)
+        scene.rootNode.addChildNode(floorNode)
+        scene.rootNode.addChildNode(playerNode)
         
-        // check what nodes are tapped
-        let p = gestureRecognize.location(in: scnView)
-        let hitResults = scnView.hitTest(p, options: [:])
-        // check that we clicked on at least one object
-        if hitResults.count > 0 {
-            // retrieved the first clicked object
-            let result = hitResults[0]
-            
-            // get its material
-            let material = result.node.geometry!.firstMaterial!
-            
-            // highlight it
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            // on completion - unhighlight
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
-                SCNTransaction.commit()
-            }
-            
-            material.emission.contents = UIColor.red
-            
-            SCNTransaction.commit()
-        }
+        gameView.showsStatistics = true
+        gameView.allowsCameraControl = false
     }
     
     override var shouldAutorotate: Bool {
@@ -113,9 +54,47 @@ class GameViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
-        } else {
+        }
+        else {
             return .all
         }
     }
-
 }
+
+extension GameViewController {
+    // store touch in global scope
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touch = touches.first
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touch {
+            
+            let touchLocation = touch.location(in: self.view)
+            if gameView.virtualDPad().contains(touchLocation) {
+                let middleOfCircleX = gameView.virtualDPad().origin.x + 75
+                let middleOfCircleY = gameView.virtualDPad().origin.y + 75
+                let lengthOfX = Float(touchLocation.x - middleOfCircleX)
+                let lengthOfY = Float(touchLocation.y - middleOfCircleY)
+                direction = float2(x: lengthOfX, y: lengthOfY)
+                direction = normalize(direction)
+                let degree = atan2(direction.x, direction.y)
+                playerNode.directionAngle = degree
+            }
+        }
+    }
+    
+    //TODO Add A and B Buton Touches Moved Equivalent
+    
+}
+
+extension GameViewController: SCNSceneRendererDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        let directionInV3 = float3(x: direction.x, y: 0, z: direction.y)
+        playerNode.walkInDirection(directionInV3)
+        cameraNode.position.x = playerNode.presentation.position.x
+        cameraNode.position.z = playerNode.presentation.position.z + CameraNode.offset
+    }
+}
+
+// Add Player Action for A and B Button

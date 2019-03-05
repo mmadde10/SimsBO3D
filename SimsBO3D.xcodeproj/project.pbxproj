@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F057BDBF222CB0810067A793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BDBE222CB0810067A793 /* AppDelegate.swift */; };
-		F057BDC1222CB0810067A793 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F057BDC0222CB0810067A793 /* art.scnassets */; };
 		F057BDC3222CB0810067A793 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BDC2222CB0810067A793 /* GameViewController.swift */; };
 		F057BDC6222CB0810067A793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F057BDC4222CB0810067A793 /* Main.storyboard */; };
 		F057BDC8222CB0820067A793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F057BDC7222CB0820067A793 /* Assets.xcassets */; };
 		F057BDCB222CB0820067A793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F057BDC9222CB0820067A793 /* LaunchScreen.storyboard */; };
 		F057BDD6222CB0820067A793 /* SimsBO3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BDD5222CB0820067A793 /* SimsBO3DTests.swift */; };
 		F057BDE1222CB0820067A793 /* SimsBO3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BDE0222CB0820067A793 /* SimsBO3DUITests.swift */; };
+		F057BE32222CCE740067A793 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = F057BE31222CCE740067A793 /* sounds */; };
+		F057BE36222DE9D90067A793 /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE35222DE9D90067A793 /* CameraNode.swift */; };
+		F057BE38222DEB8E0067A793 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE37222DEB8E0067A793 /* Helper.swift */; };
+		F057BE3A222DEBFD0067A793 /* LightNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE39222DEBFD0067A793 /* LightNode.swift */; };
+		F057BE3C222DEDE70067A793 /* FloorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE3B222DEDE70067A793 /* FloorNode.swift */; };
+		F057BE3E222DEF450067A793 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE3D222DEF450067A793 /* PlayerNode.swift */; };
+		F057BE40222DF0D40067A793 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE3F222DF0D40067A793 /* GameView.swift */; };
+		F057BE44222DF8EC0067A793 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F057BE43222DF8EC0067A793 /* art.scnassets */; };
+		F057BE46222E2EB10067A793 /* GameLevel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057BE45222E2EB10067A793 /* GameLevel1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +45,6 @@
 /* Begin PBXFileReference section */
 		F057BDBB222CB0810067A793 /* SimsBO3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimsBO3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F057BDBE222CB0810067A793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F057BDC0222CB0810067A793 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F057BDC2222CB0810067A793 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F057BDC5222CB0810067A793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F057BDC7222CB0820067A793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +56,19 @@
 		F057BDDC222CB0820067A793 /* SimsBO3DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimsBO3DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F057BDE0222CB0820067A793 /* SimsBO3DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimsBO3DUITests.swift; sourceTree = "<group>"; };
 		F057BDE2222CB0820067A793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F057BE31222CCE740067A793 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = "../../../../Downloads/Beer Can Bully Final/Beer Can Bully/sounds"; sourceTree = "<group>"; };
+		F057BE35222DE9D90067A793 /* CameraNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraNode.swift; sourceTree = "<group>"; };
+		F057BE37222DEB8E0067A793 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F057BE39222DEBFD0067A793 /* LightNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightNode.swift; sourceTree = "<group>"; };
+		F057BE3B222DEDE70067A793 /* FloorNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorNode.swift; sourceTree = "<group>"; };
+		F057BE3D222DEF450067A793 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
+		F057BE3F222DF0D40067A793 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		F057BE43222DF8EC0067A793 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		F057BE45222E2EB10067A793 /* GameLevel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevel1.swift; sourceTree = "<group>"; };
+		F057BE49222E363D0067A793 /* ball_can.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ball_can.aiff; sourceTree = "<group>"; };
+		F057BE4A222E363D0067A793 /* can_floor.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = can_floor.aiff; sourceTree = "<group>"; };
+		F057BE4B222E363D0067A793 /* whoosh.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = whoosh.aiff; sourceTree = "<group>"; };
+		F057BE4C222E363D0067A793 /* ball_floor.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ball_floor.aiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +119,21 @@
 		F057BDBD222CB0810067A793 /* SimsBO3D */ = {
 			isa = PBXGroup;
 			children = (
+				F057BE47222E36300067A793 /* Game Assets */,
+				F057BE31222CCE740067A793 /* sounds */,
 				F057BDBE222CB0810067A793 /* AppDelegate.swift */,
-				F057BDC0222CB0810067A793 /* art.scnassets */,
 				F057BDC2222CB0810067A793 /* GameViewController.swift */,
 				F057BDC4222CB0810067A793 /* Main.storyboard */,
 				F057BDC7222CB0820067A793 /* Assets.xcassets */,
 				F057BDC9222CB0820067A793 /* LaunchScreen.storyboard */,
 				F057BDCC222CB0820067A793 /* Info.plist */,
+				F057BE3B222DEDE70067A793 /* FloorNode.swift */,
+				F057BE35222DE9D90067A793 /* CameraNode.swift */,
+				F057BE37222DEB8E0067A793 /* Helper.swift */,
+				F057BE39222DEBFD0067A793 /* LightNode.swift */,
+				F057BE3D222DEF450067A793 /* PlayerNode.swift */,
+				F057BE3F222DF0D40067A793 /* GameView.swift */,
+				F057BE45222E2EB10067A793 /* GameLevel1.swift */,
 			);
 			path = SimsBO3D;
 			sourceTree = "<group>";
@@ -126,6 +154,26 @@
 				F057BDE2222CB0820067A793 /* Info.plist */,
 			);
 			path = SimsBO3DUITests;
+			sourceTree = "<group>";
+		};
+		F057BE47222E36300067A793 /* Game Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F057BE48222E363D0067A793 /* sounds */,
+				F057BE43222DF8EC0067A793 /* art.scnassets */,
+			);
+			path = "Game Assets";
+			sourceTree = "<group>";
+		};
+		F057BE48222E363D0067A793 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F057BE49222E363D0067A793 /* ball_can.aiff */,
+				F057BE4A222E363D0067A793 /* can_floor.aiff */,
+				F057BE4B222E363D0067A793 /* whoosh.aiff */,
+				F057BE4C222E363D0067A793 /* ball_floor.aiff */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +280,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F057BDC1222CB0810067A793 /* art.scnassets in Resources */,
 				F057BDCB222CB0820067A793 /* LaunchScreen.storyboard in Resources */,
 				F057BDC8222CB0820067A793 /* Assets.xcassets in Resources */,
+				F057BE44222DF8EC0067A793 /* art.scnassets in Resources */,
+				F057BE32222CCE740067A793 /* sounds in Resources */,
 				F057BDC6222CB0810067A793 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +311,13 @@
 			files = (
 				F057BDC3222CB0810067A793 /* GameViewController.swift in Sources */,
 				F057BDBF222CB0810067A793 /* AppDelegate.swift in Sources */,
+				F057BE38222DEB8E0067A793 /* Helper.swift in Sources */,
+				F057BE36222DE9D90067A793 /* CameraNode.swift in Sources */,
+				F057BE40222DF0D40067A793 /* GameView.swift in Sources */,
+				F057BE3A222DEBFD0067A793 /* LightNode.swift in Sources */,
+				F057BE3E222DEF450067A793 /* PlayerNode.swift in Sources */,
+				F057BE46222E2EB10067A793 /* GameLevel1.swift in Sources */,
+				F057BE3C222DEDE70067A793 /* FloorNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
